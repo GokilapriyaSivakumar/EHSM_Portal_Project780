@@ -35,7 +35,7 @@ sap.ui.define([
             var oSessionModel = this.getOwnerComponent().getModel("session");
             if (oSessionModel) {
                 oSessionModel.setProperty("/IsLoggedIn", false);
-                oSessionModel.setProperty("/EmployeeId", "");
+                oSessionModel.setProperty("/UserId", "");
             }
             MessageToast.show("Logged out successfully");
             var oRouter = UIComponent.getRouterFor(this);

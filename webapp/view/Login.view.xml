@@ -11,8 +11,8 @@
                     <Panel width="400px" headerText="Safety Engineer Login" class="sapUiResponsiveMargin sapUiSmallMarginTop">
                         <content>
                             <VBox class="sapUiSmallMargin">
-                                <Label text="Employee ID" required="true"/>
-                                <Input id="empIdInput" placeholder="Enter Employee ID" value="{/EmployeeId}"/>
+                                <Label text="User ID" required="true"/>
+                                <Input id="userIdInput" placeholder="Enter User ID" value="{/UserId}"/>
                                 <Label text="Password" required="true"/>
                                 <Input id="passwordInput" placeholder="Enter Password" type="Password" value="{/Password}"/>
                                 <Button text="Login" type="Emphasized" press="onLogin" width="100%" class="sapUiSmallMarginTop"/>

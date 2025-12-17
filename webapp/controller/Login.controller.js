@@ -15,7 +15,7 @@ sap.ui.define([
             var oComponent = this.getOwnerComponent();
             if (!oComponent.getModel("session")) {
                 var oSessionModel = new JSONModel({
-                    EmployeeId: "",
+                    UserId: "",
                     IsLoggedIn: false
                 });
                 oComponent.setModel(oSessionModel, "session");
@@ -23,11 +23,11 @@ sap.ui.define([
         },
 
         onLogin: function () {
-            var sEmpId = this.getView().byId("empIdInput").getValue();
+            var sUserId = this.getView().byId("userIdInput").getValue();
             var sPassword = this.getView().byId("passwordInput").getValue();
 
-            if (!sEmpId || !sPassword) {
-                MessageToast.show("Please enter both Employee ID and Password.");
+            if (!sUserId || !sPassword) {
+                MessageToast.show("Please enter both User ID and Password.");
                 return;
             }
 
@@ -42,7 +42,7 @@ sap.ui.define([
             // We will use filters.
 
             var aFilters = [
-                new Filter("EmployeeId", FilterOperator.EQ, sEmpId),
+                new Filter("user_id", FilterOperator.EQ, sUserId),
                 new Filter("Password", FilterOperator.EQ, sPassword)
             ];
 
@@ -61,7 +61,7 @@ sap.ui.define([
 
                             // Store in session
                             var oSessionModel = this.getOwnerComponent().getModel("session");
-                            oSessionModel.setProperty("/EmployeeId", sEmpId);
+                            oSessionModel.setProperty("/UserId", sUserId);
                             oSessionModel.setProperty("/IsLoggedIn", true);
 
                             // Navigate
