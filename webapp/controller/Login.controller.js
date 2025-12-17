@@ -32,7 +32,7 @@ sap.ui.define([
             }
 
             var oModel = this.getOwnerComponent().getModel();
-            
+
             // Assuming Z780_LOGIN is an EntitySet we can Read with filters
             // Or typically a key based read if EmpId is the key. 
             // The prompt implies "calling GET ... validating field Status"
@@ -52,15 +52,13 @@ sap.ui.define([
                 filters: aFilters,
                 success: function (oData) {
                     this.getView().setBusy(false);
-                    // OData read returns matching entries in oData.results
-                    // We expect one entry or we check if the first entry has Status='Success'
-                    
+                    // Validate based on presence of user_id in the returned data
                     var aResults = oData.results;
                     if (aResults && aResults.length > 0) {
-                        var oLoginData = aResults[0];
-                        if (oLoginData.Status === "Success") {
+                        var oUserData = aResults[0];
+                        if (oUserData.user_id) { // Check for user_id presence
                             MessageToast.show("Login Successful");
-                            
+
                             // Store in session
                             var oSessionModel = this.getOwnerComponent().getModel("session");
                             oSessionModel.setProperty("/EmployeeId", sEmpId);
@@ -70,10 +68,10 @@ sap.ui.define([
                             var oRouter = sap.ui.core.UIComponent.getRouterFor(this);
                             oRouter.navTo("Dashboard");
                         } else {
-                            MessageBox.error("Login failed: " + (oLoginData.Message || "Invalid credentials"));
+                            MessageBox.error("Login failed: User ID not found.");
                         }
                     } else {
-                         MessageBox.error("Login failed: Invalid credentials or user not found.");
+                        MessageBox.error("Login failed: Invalid credentials or user not found.");
                     }
                 }.bind(this),
                 error: function (oError) {

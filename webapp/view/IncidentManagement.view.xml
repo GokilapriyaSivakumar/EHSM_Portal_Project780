@@ -12,29 +12,26 @@
                 </headerToolbar>
                 <columns>
                     <Column><Text text="Incident ID"/></Column>
-                    <Column><Text text="Plant"/></Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Description"/></Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Title"/></Column>
+                    <Column><Text text="Plant ID"/></Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Location"/></Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Group"/></Column>
                     <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Category"/></Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Priority"/></Column>
                     <Column><Text text="Status"/></Column>
-                    <Column minScreenWidth="Desktop" demandPopin="true"><Text text="Date &amp; Time"/></Column>
-                    <Column minScreenWidth="Desktop" demandPopin="true"><Text text="Completion Date"/></Column>
+                    <Column minScreenWidth="Desktop" demandPopin="true"><Text text="Created On"/></Column>
                     <Column minScreenWidth="Desktop" demandPopin="true"><Text text="Created By"/></Column>
                 </columns>
                 <items>
                     <ColumnListItem>
                         <cells>
-                            <Text text="{IncidentId}"/>
-                            <Text text="{Plant}"/>
-                            <Text text="{IncidentDescription}"/>
+                            <Text text="{IncidentID}"/>
+                            <Text text="{Title}"/>
+                            <Text text="{PlantID}"/>
+                            <Text text="{Location}"/>
+                            <Text text="{IncidentGroup}"/>
                             <Text text="{IncidentCategory}"/>
-                            <Text text="{IncidentPriority}"/>
-                            <ObjectStatus text="{IncidentStatus}" state="{path: 'IncidentStatus', formatter: '.formatter.statusState'}" />
-                            <VBox>
-                                <Text text="{path: 'IncidentDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MMM dd, yyyy' }}"/>
-                                <Text text="{path: 'IncidentTime', type: 'sap.ui.model.type.Time', formatOptions: { pattern: 'HH:mm:ss' }}" class="sapUiTinyMarginTop"/>
-                            </VBox>
-                            <Text text="{path: 'CompletionDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MMM dd, yyyy' }}"/>
+                            <ObjectStatus text="{IncidentRecordStatus}" state="{path: 'IncidentRecordStatus', formatter: '.formatter.statusState'}" />
+                            <Text text="{path: 'CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MMM dd, yyyy' }}"/>
                             <Text text="{CreatedBy}"/>
                         </cells>
                     </ColumnListItem>

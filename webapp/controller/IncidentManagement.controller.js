@@ -24,11 +24,8 @@ sap.ui.define([
             var oBinding = oTable.getBinding("items");
 
             if (oBinding) {
-                var aFilters = [];
-                if (sEmpId) {
-                    aFilters.push(new Filter("EmployeeId", FilterOperator.EQ, sEmpId));
-                }
-                oBinding.filter(aFilters);
+                // No specific filter requested in updated requirements.
+                // oBinding.filter(aFilters);
             }
         },
 
@@ -40,9 +37,8 @@ sap.ui.define([
         formatter: {
             statusState: function (sStatus) {
                 if (!sStatus) return "None";
-                if (sStatus.toLowerCase() === "open") return "Error";
-                if (sStatus.toLowerCase() === "closed") return "Success";
-                if (sStatus.toLowerCase() === "in progress") return "Warning";
+                if (sStatus === "OPEN") return "Error"; // Or Warning/Information depending on preference, usually Open incidents are bad/needs attention (Error or Warning). User said "highlighting... such as CLOSED or OPEN". I'll use Error for Open to be visible.
+                if (sStatus === "CLOSED") return "Success";
                 return "None";
             }
         }

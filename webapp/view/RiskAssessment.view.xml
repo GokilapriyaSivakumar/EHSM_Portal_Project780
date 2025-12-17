@@ -11,29 +11,21 @@
                     </Toolbar>
                 </headerToolbar>
                 <columns>
-                    <Column><Text text="Risk ID"/></Column>
-                    <Column><Text text="Plant"/></Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Description"/></Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Category"/></Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Severity"/></Column>
-                    <Column minScreenWidth="Desktop" demandPopin="true"><Text text="Likelihood"/></Column>
-                    <Column minScreenWidth="Desktop" demandPopin="true"><Text text="Mitigation"/></Column>
-                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Date"/></Column>
+                    <Column><Text text="Risk Key Ref"/></Column>
+                    <Column><Text text="Team Member"/></Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Role"/></Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Regulation"/></Column>
+                    <Column minScreenWidth="Tablet" demandPopin="true"><Text text="Created On"/></Column>
                     <Column minScreenWidth="Desktop" demandPopin="true"><Text text="Created By"/></Column>
                 </columns>
                 <items>
                     <ColumnListItem>
                         <cells>
-                            <Text text="{RiskId}"/>
-                            <Text text="{Plant}"/>
-                            <Text text="{RiskDescription}"/>
-                            <Text text="{RiskCategory}"/>
-                            <ObjectStatus text="{RiskSeverity}" state="{path: 'RiskSeverity', formatter: '.formatter.severityState'}"/> 
-                            <!-- I'll add a local formatter logic or simple binding. The user asked for clean UI alignment. -->
-                            <!-- Let's just use Text for now unless I define a formatter. I'll stick to Text to be safe or add formatter in controller. -->
-                            <Text text="{Likelihood}"/>
-                            <Text text="{MitigationMeasures}"/>
-                            <Text text="{path: 'RiskIdentificationDate', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MMM dd, yyyy' }}"/>
+                            <Text text="{RiskKeyRef}"/>
+                            <Text text="{TeamMember}"/>
+                            <Text text="{Role}"/>
+                            <Text text="{Regulation}"/>
+                            <Text text="{path: 'CreatedOn', type: 'sap.ui.model.type.Date', formatOptions: { pattern: 'MMM dd, yyyy' }}"/>
                             <Text text="{CreatedBy}"/>
                         </cells>
                     </ColumnListItem>

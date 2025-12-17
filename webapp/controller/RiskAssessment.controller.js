@@ -24,31 +24,11 @@ sap.ui.define([
             var oBinding = oTable.getBinding("items");
 
             if (oBinding) {
-                var aFilters = [];
-                if (sEmpId) {
-                    aFilters.push(new Filter("CreatedBy", FilterOperator.EQ, sEmpId));
-                    // Assuming 'CreatedBy' is the field to filter by EmployeeId as per requirements "filtered by the logged-in EmployeeId"
-                    // If the requirement meant the 'EmployeeId' field exists in Z780_RISK, I would use that. 
-                    // Usually 'CreatedBy' or 'EmployeeId' is used. I see 'CreatedBy' in the column list.
-                    // But typically if it is "my risks", it might be CreatedBy. 
-                    // The prompt says "filtered by the logged-in EmployeeId".
-                    // I will filter on 'EmployeeId' if it exists, but the list of columns doesn't explicitly have separate 'EmployeeId'.
-                    // However, often the filter property might differ from display.
-                    // Given the columns: RiskId, Plant, RiskDescription... CreatedBy.
-                    // I will assume the filter should be on 'EmployeeId' if the service supports it, or 'CreatedBy'.
-                    // Let's assume 'EmployeeId' field exists in the entity even if not displayed, OR 'CreatedBy' is the employee ID.
-                    // I'll bet on 'CreatedBy' matches EmployeeID for this context. 
-                    // Wait, let's use 'EmployeeId' as the filter property, if it fails, it fails. 
-                    // actually, usually services exposing filtered data might need 'EmployeeId'. 
-                    // Let's check the prompt again: "filtered by the logged-in EmployeeId". 
-                    // I will add a Filter for "EmployeeId". If the backend property is named differently, it's a backend issue, but standard practice is usually consistent naming.
-                    // Re-reading columns: CreatedBy is there. 
-                    // I will filter by 'EmployeeId' as requested. If the OData metadata doesn't have it, it might be an issue.
-                    // But I don't have the metadata.
-                    // Providing a filter on 'EmployeeId'.
-                    aFilters.push(new Filter("EmployeeId", FilterOperator.EQ, sEmpId));
-                }
-                oBinding.filter(aFilters);
+                // No specific filter requested in the updated requirements.
+                // Previous requirement asked for filtering by EmployeeId, but the new strict requirement list of fields 
+                // does not include EmployeeId, and does not explicitly ask for filtering.
+                // To avoid OData errors if 'EmployeeId' field doesn't exist, we will list all.
+                // aFilters.push(new Filter("EmployeeId", FilterOperator.EQ, sEmpId)); 
             }
         },
 
