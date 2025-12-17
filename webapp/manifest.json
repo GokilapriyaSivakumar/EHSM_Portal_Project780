@@ -88,28 +88,51 @@
     "routing": {
       "config": {
         "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "ehsm.view",
         "controlAggregation": "pages",
         "controlId": "app",
-        "transition": "slide",
-        "type": "View",
-        "viewType": "XML",
-        "path": "ehsm.view",
-        "async": true,
-        "viewPath": "ehsm.view"
+        "clearControlAggregation": false
       },
       "routes": [
         {
-          "name": "Routeapp",
-          "pattern": ":?query:",
-          "target": [
-            "Targetapp"
-          ]
+          "name": "Login",
+          "pattern": "",
+          "target": "Login"
+        },
+        {
+          "name": "Dashboard",
+          "pattern": "dashboard",
+          "target": "Dashboard"
+        },
+        {
+          "name": "RiskAssessment",
+          "pattern": "risk-assessment",
+          "target": "RiskAssessment"
+        },
+        {
+          "name": "IncidentManagement",
+          "pattern": "incident-management",
+          "target": "IncidentManagement"
         }
       ],
       "targets": {
-        "Targetapp": {
-          "id": "app",
-          "name": "app"
+        "Login": {
+          "viewName": "Login",
+          "viewLevel": 1
+        },
+        "Dashboard": {
+          "viewName": "Dashboard",
+          "viewLevel": 2
+        },
+        "RiskAssessment": {
+          "viewName": "RiskAssessment",
+          "viewLevel": 3
+        },
+        "IncidentManagement": {
+          "viewName": "IncidentManagement",
+          "viewLevel": 3
         }
       }
     },
